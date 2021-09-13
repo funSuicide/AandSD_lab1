@@ -42,7 +42,6 @@ void MenuWorkSets(Set&A) {
 					std::cout << "[" << i << "]: ";
 					std::cin >> NewSet[i];
 				}
-				
 				Set B(Size, NewSet);
 				A = A + B;
 				B.~Set();

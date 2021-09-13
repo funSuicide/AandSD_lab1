@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AandSD_lab1.cpp" />
+    <ClCompile Include="Set.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Set.h" />
