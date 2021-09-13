@@ -5,6 +5,24 @@ using namespace std;
 
 void Menu(Set&A);
 
+int CheckNumber(){
+	char Data[32];
+	char Mask[12] = { '1','2','3','4','5','6','7','8','9','0', '-' };
+	int Checker = 0;
+	std::cin >> Data;
+	for (int i = 0; i < strlen(Data); i++)
+		{
+			for (int j = 0; j < 12; j++)
+		{
+			if (Data[i] == Mask[j]) Checker++;
+		}
+	}
+	if (Checker != strlen(Data)) throw "[!]Incorrect data format...\n";
+	if (Checker == 0) throw "[!]Incorrect data format...\n";
+	int Number = (int)atof(Data);
+	return Number;
+}
+
 int GetKey()
 {
 	int Key = _getch();
@@ -14,7 +32,7 @@ int GetKey()
 
 int main()
 {
-	std::cout << "Hello, User^_^!\n";
+	std::cout << "Hello, User ^_^!\n\n";
 	Set A;
 	Menu(A);
 }
@@ -33,14 +51,14 @@ void MenuWorkSets(Set&A) {
 			system("cls");
 			try
 			{
-				int Size;
 				std::cout << "Ented a size: ";
-				std::cin >> Size;
+				int Size = CheckNumber();
+				if (Size < 0) Size *= -1;
 
 				int* NewSet = new int[Size];
 				for (int i = 0; i < Size; i++) {
 					std::cout << "[" << i << "]: ";
-					std::cin >> NewSet[i];
+					NewSet[i] = CheckNumber();
 				}
 				Set B(Size, NewSet);
 				A = A + B;
@@ -58,14 +76,14 @@ void MenuWorkSets(Set&A) {
 			system("cls");
 			try
 			{
-				int Size;
 				std::cout << "Ented a size: ";
-				std::cin >> Size;
+				int Size  = CheckNumber();
+				if (Size < 0) Size *= -1;
 
 				int* NewSet = new int[Size];
 				for (int i = 0; i < Size; i++) {
 					std::cout << "[" << i << "]: ";
-					std::cin >> NewSet[i];
+					NewSet[i] = CheckNumber();
 				}
 
 				Set B(Size, NewSet);
@@ -84,16 +102,14 @@ void MenuWorkSets(Set&A) {
 			system("cls");
 			try
 			{
-				int Size;
 				std::cout << "Ented a size: ";
-				std::cin >> Size;
-
+				int Size = CheckNumber();
+				if (Size < 0) Size *= -1;
 				int* NewSet = new int[Size];
 				for (int i = 0; i < Size; i++) {
 					std::cout << "[" << i << "]: ";
-					std::cin >> NewSet[i];
+					NewSet[i] = CheckNumber();
 				}
-
 				Set B(Size, NewSet);
 				A = IntersectionSets(A, B);
 				B.~Set();
@@ -108,7 +124,6 @@ void MenuWorkSets(Set&A) {
 		case 51:
 			system("cls");
 			Menu(A);
-			exit(0);
 			break;
 		default: printf("Select [0-3]");
 		}
@@ -129,9 +144,8 @@ void MenuSet(Set&A) {
 			system("cls");
 			try
 			{
-				int Number;
 				std::cout << "Ented a number: ";
-				std::cin >> Number;
+				int Number = CheckNumber();
 				A = A + Number;
 			}
 			catch (const char* err)
@@ -145,9 +159,8 @@ void MenuSet(Set&A) {
 			system("cls");
 			try
 			{
-				int Number;
 				std::cout << "Ented a number: ";
-				std::cin >> Number;
+				int Number = CheckNumber();
 				A = A - Number;
 			}
 			catch (const char* err)
@@ -159,9 +172,8 @@ void MenuSet(Set&A) {
 		case 50:
 			system("cls");
 			Menu(A);
-			exit(0);
 			break;
-		default: printf("Выберите 1 из предложенных вариантов [0-5]");
+		default: printf("Select [0-2]");
 		}
 	}
 }
@@ -181,7 +193,8 @@ void Menu(Set&A){
 					A.~Set();
 					int Size;
 					std::cout << "Ented a size: ";
-					std::cin >> Size;
+					Size = CheckNumber();
+					if (Size < 0) Size *= -1;
 
 					int* NewSet = new int[Size];
 					for (int i = 0; i < Size; i++) {
@@ -206,13 +219,14 @@ void Menu(Set&A){
 				Menu(A);
 			case 52:
 				system("cls");
+				A.~Set();
 				printf("Thank you! ^_^\n");
 				exit(0);
 			break;
 			default: printf("Select [0-3]");
-			}
 		}
 	}
+}
 
 
 

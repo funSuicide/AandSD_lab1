@@ -8,7 +8,7 @@ Set::Set() {
 Set::Set(int cardinality, int *array) {
 	for (int i = 0; i < cardinality; i++) {
 		for (int j = 0; j < cardinality; j++) {
-			if (array[i] == array[j]) throw ("[!]: Invalid array format\n");
+			if ((array[i] == array[j]) && i!=j) throw "[!]: Invalid array format\n";
 		}
 	}
 
@@ -34,7 +34,7 @@ Set::~Set() {
 }
 
 int& Set::operator [] (const int index) {
-	if (index >= cardinality) throw ("[!]: Incorrect access by index\n");
+	if (index >= cardinality) throw "[!]: Incorrect access by index\n";
 	else return array[index];
 }
 
@@ -84,7 +84,7 @@ Set Set::operator - (const Set &rhs) {
 
 Set Set::operator + (const int value) {
 	for (int i = 0; i < cardinality; i++) {
-		if (array[i] == value) throw ("[!]: The specified value already belongs to the set\n");
+		if (array[i] == value) throw "[!]: The specified value already belongs to the set\n";
 	}
 	Set tmp;
 	tmp.cardinality = this->cardinality + 1;
@@ -121,7 +121,7 @@ Set Set::operator - (const int value) {
 
 std::ostream& operator << (std::ostream &out, const Set &rhs) {
 	out << "Cardinality is " << rhs.cardinality << "\n";
-	out << "Set = {";
+	out << "Set = { ";
 	for (int i = 0; i < rhs.cardinality; i++) {
 		out << rhs.array[i] << " ";
 	}
