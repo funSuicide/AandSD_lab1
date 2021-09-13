@@ -17,8 +17,8 @@ int CheckNumber(){
 			if (Data[i] == Mask[j]) Checker++;
 		}
 	}
-	if (Checker != strlen(Data)) throw "[!]Incorrect data format...\n";
-	if (Checker == 0) throw "[!]Incorrect data format...\n";
+	if (Checker != strlen(Data)) throw "[!]: Incorrect data format...\n"; 
+	if (Checker == 0) throw "[!]: Incorrect data format...\n"; 
 	int Number = (int)atof(Data);
 	return Number;
 }
@@ -62,7 +62,6 @@ void MenuWorkSets(Set&A) {
 				}
 				Set B(Size, NewSet);
 				A = A + B;
-				B.~Set();
 			}
 			catch (const char* err)
 			{
@@ -88,7 +87,6 @@ void MenuWorkSets(Set&A) {
 
 				Set B(Size, NewSet);
 				A = A - B;
-				B.~Set();
 			}
 			catch (const char* err)
 			{
@@ -112,7 +110,6 @@ void MenuWorkSets(Set&A) {
 				}
 				Set B(Size, NewSet);
 				A = IntersectionSets(A, B);
-				B.~Set();
 			}
 			catch (const char* err)
 			{
@@ -191,17 +188,24 @@ void Menu(Set&A){
 				system("cls");
 				{
 					A.~Set();
-					int Size;
-					std::cout << "Ented a size: ";
-					Size = CheckNumber();
-					if (Size < 0) Size *= -1;
+					try {
+						int Size;
+						std::cout << "Ented a size: ";
+						Size = CheckNumber();
+						if (Size < 0) Size *= -1;
 
-					int* NewSet = new int[Size];
-					for (int i = 0; i < Size; i++) {
-						std::cout << "[" << i << "]: ";
-						std::cin >> NewSet[i];
+						int* NewSet = new int[Size];
+						for (int i = 0; i < Size; i++) {
+							std::cout << "[" << i << "]: ";
+							std::cin >> NewSet[i];
+						}
+						Set B(Size, NewSet);
+						A = B;
 					}
-					Set A(Size, NewSet);
+					catch (const char* err)
+					{
+						std::cerr << err;
+					}
 					Menu(A);
 				}
 				break;
