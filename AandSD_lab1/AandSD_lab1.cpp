@@ -189,11 +189,9 @@ void Menu(Set&A){
 				{
 					A.~Set();
 					try {
-						int Size;
 						std::cout << "Ented a size: ";
-						Size = CheckNumber();
+						int Size = CheckNumber();
 						if (Size < 0) Size *= -1;
-
 						int* NewSet = new int[Size];
 						for (int i = 0; i < Size; i++) {
 							std::cout << "[" << i << "]: ";
@@ -221,13 +219,14 @@ void Menu(Set&A){
 				system("cls");
 				A.~Set();
 				Menu(A);
+				break;
 			case 52:
 				system("cls");
 				A.~Set();
 				printf("Thank you! ^_^\n");
 				exit(0);
-			break;
-			default: printf("Select [0-3]");
+				break;
+			default: printf("Select [0-4]");
 		}
 	}
 }
