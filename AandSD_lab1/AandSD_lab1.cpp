@@ -9,16 +9,17 @@ int CheckNumber(){
 	char Data[32];
 	char Mask[12] = { '1','2','3','4','5','6','7','8','9','0', '-' };
 	int Checker = 0;
+	int Count = 0;
 	std::cin >> Data;
 	for (int i = 0; i < strlen(Data); i++)
 		{
+		if (Data[i] == '-') Count++;
 			for (int j = 0; j < 12; j++)
-		{
+			{
 			if (Data[i] == Mask[j]) Checker++;
-		}
+			}
 	}
-	if (Checker != strlen(Data)) throw "[!]: Incorrect data format...\n"; 
-	if (Checker == 0) throw "[!]: Incorrect data format...\n"; 
+	if ((Checker != strlen(Data)) || (Checker == 0) || (Count > 1)) throw "[!]: Incorrect data format...\n";
 	int Number = (int)atof(Data);
 	return Number;
 }
