@@ -190,7 +190,7 @@ void Menu(Set&A){
 				{
 					A.~Set();
 					try {
-						std::cout << "Ented a size: ";
+						std::cout << "Enter a size: ";
 						int Size = CheckNumber();
 						if (Size < 0) Size *= -1;
 						int* NewSet = new int[Size];

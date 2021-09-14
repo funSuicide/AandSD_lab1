@@ -106,6 +106,12 @@ Set Set::operator - (const int value) {
 		Set tmp;
 		tmp.cardinality = this->cardinality - 1;
 		tmp.array = new int[tmp.cardinality];
+		if (counter == 0) {
+			for (int i = 0; i < tmp.cardinality; i++)
+			{
+				tmp.array[i] = array[i+1];
+			}
+		}
 		for (int i = 0; i < counter; i++)
 		{
 			tmp.array[i] = array[i];
