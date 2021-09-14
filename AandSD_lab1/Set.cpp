@@ -11,7 +11,6 @@ Set::Set(int cardinality, int *array) {
 			if ((array[i] == array[j]) && i!=j) throw "[!]: Invalid array format\n";
 		}
 	}
-
 	this->cardinality = cardinality;
 	this->array = new int[this->cardinality];
 	for (int i = 0; i < this->cardinality; i++) {

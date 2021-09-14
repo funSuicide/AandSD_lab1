@@ -196,7 +196,7 @@ void Menu(Set&A){
 						int* NewSet = new int[Size];
 						for (int i = 0; i < Size; i++) {
 							std::cout << "[" << i << "]: ";
-							std::cin >> NewSet[i];
+							NewSet[i] = CheckNumber();
 						}
 						Set B(Size, NewSet);
 						A = B;
