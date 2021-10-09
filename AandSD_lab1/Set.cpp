@@ -6,6 +6,11 @@ Set::Set() {
 }
 
 Set::Set(int cardinality, int *array) {
+	int count = 0;
+	while (array != NULL) {
+		count++;
+	}
+	if (count != cardinality) throw "[!]: Invalid array format\n";
 	for (int i = 0; i < cardinality; i++) {
 		for (int j = 0; j < cardinality; j++) {
 			if ((array[i] == array[j]) && i!=j) throw "[!]: Invalid array format\n";
@@ -145,4 +150,8 @@ Set IntersectionSets(const Set &rhs1, const Set &rhs2) {
 		}
 	}
 	return tmp;
+}
+
+int Set::GetCardinality() const {
+	return cardinality;
 }
