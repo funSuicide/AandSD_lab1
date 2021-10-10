@@ -1,7 +1,13 @@
 #include "pch.h"
-#include"../AandSD_lab1/Set.cpp"
+#include"C:\Users\Admin\source\repos\AandSD_lab1\AandSD_lab1/Set.h"
+#include"C:\Users\Admin\source\repos\AandSD_lab1\AandSD_lab1/Set.cpp"
 
-TEST(Set, CopyConstructor) {
+TEST(MySet, Constructor) {
+	Set B;
+	ASSERT_EQ(0, B.GetCardinality());
+}
+
+TEST(MySet, CopyConstructor) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	Set B(A);
@@ -10,19 +16,7 @@ TEST(Set, CopyConstructor) {
 	}
 }
 
-TEST(Set, Destructor) {
-	int a[3] = { 3, 4, 5 };
-	Set A(3, a);
-	A.~Set();
-	ASSERT_EQ(0, A.GetCardinality());
-}
-
-TEST(Set, Constructor) {
-	Set B;
-	ASSERT_EQ(0, B.GetCardinality());
-}
-
-TEST(Set, ConstructorWithParametrs) {
+TEST(MySet, ConstructorWithParametrs) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	ASSERT_EQ(3, A.GetCardinality());
@@ -31,14 +25,14 @@ TEST(Set, ConstructorWithParametrs) {
 	}
 }
 
-TEST(Set, AccessOperator) {
+TEST(MySet, AccessOperator) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	int number = A[0];
 	ASSERT_EQ(3, number);
 }
 
-TEST(Set, EqualityOperator) {
+TEST(MySet, EqualityOperator) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	Set B;
@@ -48,20 +42,20 @@ TEST(Set, EqualityOperator) {
 	}
 }
 
-TEST(Set, SummSetWithNumber) {
+TEST(MySet, SummSetWithNumber) {
 	Set B;
 	B = B + 1;
 	ASSERT_EQ(1, B[0]);
 }
 
-TEST(Set, DifferenceSetWithNumber) {
+TEST(MySet, DifferenceSetWithNumber) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	A = A - 5;
 	ASSERT_EQ(2, A.GetCardinality());
 }
 
-TEST(Set, SummOfSets) {
+TEST(MySet, SummOfSets) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	int b[1] = { 1 };
@@ -70,7 +64,7 @@ TEST(Set, SummOfSets) {
 	ASSERT_EQ(1, A[3]);
 }
 
-TEST(Set, DifferenceOfSets) {
+TEST(MySet, DifferenceOfSets) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	int b[1] = { 5 };
@@ -79,7 +73,7 @@ TEST(Set, DifferenceOfSets) {
 	ASSERT_EQ(2, A.GetCardinality());
 }
 
-TEST(Set, IntersectionSets) {
+TEST(MySet, IntersectionSets) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	int b[1] = { 5 };
@@ -89,31 +83,29 @@ TEST(Set, IntersectionSets) {
 	ASSERT_EQ(5, C[0]);
 }
 
-TEST(Set, GetCardinality) {
+TEST(MySet, GetCardinality) {
 	Set A;
 	ASSERT_EQ(0, A.GetCardinality());
 }
 
-TEST(Set, ExceptionAccessOperator) {
+TEST(MySet, ExceptionAccessOperator) {
 	Set A;
 	ASSERT_THROW(A[2], const char*);
 }
 
-TEST(Set, ExceptionSummSetWithNumber) {
+TEST(MySet, ExceptionSummSetWithNumber) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
 	ASSERT_THROW(A = A + 3, const char*);
 }
 
-TEST(Set, ExceptionDifferenceSetWithNumber) {
+TEST(MySet, ExceptionDifferenceSetWithNumber) {
 	int a[3] = { 3, 4, 5 };
 	Set A(3, a);
-	ASSERT_THROW(A = A - 5, const char*);
+	ASSERT_THROW(A = A - 7, const char*);
 }
 
-TEST(Set, ExceptionConstructorWithParametrs) {
-	int a[3] = { 3, 4, 5 };
+TEST(MySet, ExceptionConstructorWithParametrs) {
 	int b[3] = { 5, 5, 5 };
-	ASSERT_THROW(Set A(2, a), const char*);
 	ASSERT_THROW(Set B(3, b), const char*);
 }

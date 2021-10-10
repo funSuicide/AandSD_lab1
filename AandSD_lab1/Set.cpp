@@ -1,16 +1,12 @@
+#pragma once
 #include "Set.h"
 
 Set::Set() {
-	array = 0;
+	array = nullptr;
 	cardinality = 0;
 }
 
 Set::Set(int cardinality, int *array) {
-	int count = 0;
-	while (array != NULL) {
-		count++;
-	}
-	if (count != cardinality) throw "[!]: Invalid array format\n";
 	for (int i = 0; i < cardinality; i++) {
 		for (int j = 0; j < cardinality; j++) {
 			if ((array[i] == array[j]) && i!=j) throw "[!]: Invalid array format\n";
