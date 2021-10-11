@@ -116,9 +116,9 @@ Set Set::operator - (const int value) {
 		{
 			tmp.array[i] = array[i];
 		}
-		for (int i = counter + 1; i < tmp.cardinality; i++)
+		for (int i = counter + 1; i < cardinality; i++)
 		{
-			tmp.array[i] = array[i];
+			tmp.array[i-1] = array[i];
 		}
 		return tmp;
 	}

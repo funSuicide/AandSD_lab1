@@ -123,7 +123,7 @@ void MenuWorkSets(Set&A) {
 			system("cls");
 			Menu(A);
 			break;
-		default: printf("Select [0-3]");
+		default: std::cout << "Select [0-3]" << std::endl;
 		}
 	}
 }
@@ -171,7 +171,7 @@ void MenuSet(Set&A) {
 			system("cls");
 			Menu(A);
 			break;
-		default: printf("Select [0-2]");
+		default: std::cout << "Select [0-2]" << std::endl;
 		}
 	}
 }
@@ -224,10 +224,10 @@ void Menu(Set&A){
 			case 52:
 				system("cls");
 				A.~Set();
-				printf("Thank you! ^_^\n");
+				std::cout << "Thank you! ^_^" << std::endl;
 				exit(0);
 				break;
-			default: printf("Select [0-4]");
+			default: std::cout << "Select [0-4]" << std::endl;
 		}
 	}
 }
