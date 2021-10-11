@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <string>
 using namespace std;
-
+//
 int CheckNumber() {
 	char Data[32];
 	char Mask[12] = { '1','2','3','4','5','6','7','8','9','0', '-' };
