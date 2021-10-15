@@ -145,7 +145,7 @@ public:
 		return out;
 	}
 
-	friend Set<T> IntersectionSets(const Set<T> &rhs1, const Set<T> &rhs2) {
+	friend Set<T> IntersectionSets(Set<T> &rhs1, Set<T> &rhs2) {
 		Set<T> tmp;
 		for (int i = 0; i < rhs1.cardinality; i++) {
 			for (int j = 0; j < rhs2.cardinality; j++) {

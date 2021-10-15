@@ -62,7 +62,7 @@ int main()
 
 	int Repeat = 1;
 	std::cout << "Hello, User ^_^!\n\n";
-	std::cout << "[0]: Set of int\n[1]: Set of double\n[2]: Set of string\n"<< std::endl;
+	std::cout << "[0]: Set of int\n[1]: Set of double\n[2]: Set of string\n[3]: Exit\n"<< std::endl;
 	while (Repeat != 0)
 	{
 		int k = GetKey();
@@ -80,7 +80,12 @@ int main()
 			system("cls");
 			MenuString(C);
 			break;
-		default: std::cout << "Select [0-2]" << endl;
+		case 51:
+			system("cls");
+			std::cout << "Thank you! ^_^\n" << endl;
+			exit(0);
+			break;
+		default: std::cout << "Select [0-3]" << endl;
 		}
 	}
 }
@@ -280,8 +285,7 @@ void MenuString(Set<std::string>&A) {
 		case 52:
 			system("cls");
 			A.~Set();
-			std::cout << "Thank you! ^_^" << std::endl;
-			exit(0);
+			main();
 			break;
 		default: std::cout << "Select [0-4]" << std::endl;
 		}
@@ -475,8 +479,7 @@ void MenuDouble(Set<double>&A) {
 		case 52:
 			system("cls");
 			A.~Set();
-			std::cout << "Thank you!^_^" << std::endl;
-			exit(0);
+			main();
 			break;
 		default: std::cout << "Select [0-4]" << std::endl;
 		}
@@ -671,8 +674,7 @@ void MenuInt(Set<int>&A) {
 		case 52:
 			system("cls");
 			A.~Set();
-			std::cout << "Thank you! ^_^" << std::endl;
-			exit(0);
+			main();
 			break;
 		default: std::cout << "Select [0-4]" << std::endl;
 		}
