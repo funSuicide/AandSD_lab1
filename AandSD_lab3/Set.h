@@ -7,20 +7,14 @@ template <class T>
 class Set {
 	std::vector<T> v;
 public:
-	auto Contain(T element)const
-	{
-		auto index = v.begin();
-		if (*index == element) return index;
-		while (*index != element)
-		{
-			++index;
-			if (*index == element) return index;
+	auto Contain(T element)const {
+		for (auto it = v.begin(); it != v.end(); it++) {
+			if (*it == element) return it;
 		}
 		throw "[!]: This element is missing in the set!\n";
 	}
 
-	T operator[](int index) const
-	{
+	T operator[](int index) const {
 		if ((index >= v.size()) || (index < 0) || (v.size() == 0)) throw "[!]: Incorrect index!\n";
 		return v[index];
 	}
@@ -47,7 +41,7 @@ public:
 		for (auto it = rhs.v.begin(); it != rhs.v.end(); it++) {
 			for (auto iter = v.begin(); iter != v.end(); iter++) {
 				if (*it == *iter) {
-					tmp.v.erase(*it);
+					tmp - *iter;
 					break;
 				}
 			}
@@ -66,6 +60,10 @@ public:
 			}
 		}
 		return tmp;
+	}
+
+	void ClearSet() {
+		v.clear();
 	}
 
 	void operator + (T value) {
