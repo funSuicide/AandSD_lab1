@@ -25,19 +25,18 @@ public:
 		return v[index];
 	}
 
-	/*
 	Set<T> operator + (const Set &rhs) {
 		Set<T> tmp(*this);
-		for (int i = 0; i < rhs.cardinality; i++) {
+		for (auto it = rhs.v.begin(); it != rhs.v.end(); it++) {
 			bool flag = true;
-			for (int j = 0; j < cardinality; j++) {
-				if (rhs.array[i] == array[j]) {
+			for (auto iter = v.begin(); iter != v.end(); iter++) {
+				if (*it == *iter) {
 					flag = false;
 					break;
 				}
 			}
 			if (flag == true) {
-				tmp = tmp + rhs.array[i];
+				tmp.v.push_back(*it);
 			}
 		}
 		return tmp;
@@ -45,17 +44,30 @@ public:
 	
 	Set<T> operator - (const Set<T> &rhs) {
 		Set<T> tmp(*this);
-		for (int i = 0; i < rhs.cardinality; i++) {
-			for (int j = 0; j < cardinality; j++) {
-				if (rhs.array[i] == array[j]) {
-					tmp = tmp - rhs.array[i];
+		for (auto it = rhs.v.begin(); it != rhs.v.end(); it++) {
+			for (auto iter = v.begin(); iter != v.end(); iter++) {
+				if (*it == *iter) {
+					tmp.v.erase(*it);
 					break;
 				}
 			}
 		}
 		return tmp;
 	}
-	*/
+	
+	Set<T> IntersectionSets(const Set<T> &rhs) {
+		Set<T> tmp;
+		for (auto it = rhs.v.begin(); it != rhs.v.end(); it++) {
+			for (auto iter = v.begin(); iter != v.end(); iter++) {
+				if (*it == *iter) {
+					tmp.v.push_back(*it);
+					break;
+				}
+			}
+		}
+		return tmp;
+	}
+
 	void operator + (T value) {
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
@@ -84,19 +96,4 @@ public:
 		out << "}";
 		return out;
 	}
-
-	/*
-	friend Set<T> IntersectionSets(Set<T> &rhs1, Set<T> &rhs2) {
-		Set<T> tmp;
-		for (int i = 0; i < rhs1.cardinality; i++) {
-			for (int j = 0; j < rhs2.cardinality; j++) {
-				if (rhs1.array[i] == rhs2.array[j]) {
-					tmp = tmp + rhs1.array[i];
-					break;
-				}
-			}
-		}
-		return tmp;
-	}
-	*/
 };
