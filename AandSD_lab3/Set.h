@@ -15,8 +15,12 @@ public:
 	}
 
 	T operator[](int index) const {
+		int idx = 0;
 		if ((index >= v.size()) || (index < 0) || (v.size() == 0)) throw "[!]: Incorrect index!\n";
-		return v[index];
+		for (auto it = v.begin(); it != v.end(); it++) {
+			if (idx == index) return *it;
+			idx++;
+		}
 	}
 
 	Set<T> operator + (const Set &rhs) {
