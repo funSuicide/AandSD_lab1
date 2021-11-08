@@ -168,7 +168,7 @@ void MenuWorkSetsString(Set<std::string>&A) {
 					std::getline(std::cin, NewSet[i]);
 					B + NewSet[i];
 				}
-				A.IntersectionSets(B);
+				A = A.IntersectionSets(B);
 			}
 			catch (const char* err)
 			{
@@ -343,7 +343,7 @@ void MenuWorkSetsDouble(Set<double>&A) {
 					NewSet[i] = CheckNumberDouble();
 					B + NewSet[i];
 				}
-				A.IntersectionSets(B);
+				A = A.IntersectionSets(B);
 			}
 			catch (const char* err)
 			{
@@ -515,7 +515,7 @@ void MenuWorkSetsInt(Set<int>&A) {
 					NewSet[i] = CheckNumber();
 					B + NewSet[i];
 				}
-				A.IntersectionSets(B);
+				A = A.IntersectionSets(B);
 			}
 			catch (const char* err)
 			{

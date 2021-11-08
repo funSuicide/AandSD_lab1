@@ -73,7 +73,7 @@ public:
 	void operator + (T value) {
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
-			if (*it == value) throw "[!]: The specified value already belongs to the set\n!";
+			if (*it == value) throw "[!]: The specified value already belongs to the set!\n";
 		}
 		v.push_back(value);
 	}
